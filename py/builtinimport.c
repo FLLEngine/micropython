@@ -384,6 +384,20 @@ mp_obj_t mp_builtin___import__(size_t n_args, const mp_obj_t *args) {
 
             if (stat == MP_IMPORT_STAT_NO_EXIST) {
                 module_obj = MP_OBJ_NULL;
+                // Look for nested modules representing package.module
+                if (mod_str[i] == '.') {
+                    // The outer module is be the builtin "package"
+                    mp_obj_t package_obj = mp_module_get(mod_name);
+                    if (package_obj != MP_OBJ_NULL) {
+                        // Name of the submodule is everything after the separator
+                        mp_obj_t dest[2] = { MP_OBJ_NULL };
+                        mp_type_module.attr(package_obj, qstr_from_strn(mod_str + i + 1, strlen(mod_str) - i - 1), dest);
+                        // If we found the attribute and it is in fact a module, return this submodule.
+                        if (dest[0] != MP_OBJ_NULL && mp_obj_is_type(dest[0], &mp_type_module)) {
+                            return dest[0];
+                        }
+                    }
+                }
                 #if MICROPY_MODULE_WEAK_LINKS
                 // check if there is a weak link to this module
                 if (i == mod_len) {
@@ -481,11 +495,34 @@ mp_obj_t mp_builtin___import__(size_t n_args, const mp_obj_t *args) {
         mp_raise_NotImplementedError(MP_ERROR_TEXT("relative import"));
     }
 
+    // Check if we are looking for a submodule
+    const char *module_name = mp_obj_str_get_str(args[0]);
+    char *sep = strchr(module_name, '.');
+    bool get_sub = sep != NULL;
+
+    // Get the (main) module name as a qstr
+    size_t module_name_len = sep - module_name;
+    qstr module_name_qstr = qstr_from_strn(module_name, get_sub ? module_name_len : strlen(module_name));
+
     // Check if module already exists, and return it if it does
-    qstr module_name_qstr = mp_obj_str_get_qstr(args[0]);
     mp_obj_t module_obj = mp_module_get(module_name_qstr);
+
     if (module_obj != MP_OBJ_NULL) {
-        return module_obj;
+        // If we are looking for a submodule, try to find it as an attribute of the main module
+        if (get_sub) {
+            // Name of the submodule is everything after the separator
+            qstr sub_module_name_qstr = qstr_from_strn(sep + 1, strlen(module_name) - module_name_len - 1);
+            mp_obj_t dest[2] = { MP_OBJ_NULL };
+            mp_type_module.attr(module_obj, sub_module_name_qstr, dest);
+            // If we found the attribute and it is in fact a module, return this submodule.
+            if (dest[0] != MP_OBJ_NULL && mp_obj_is_type(dest[0], &mp_type_module)) {
+                return dest[0];
+            }
+        }
+        // If submodule was not requested, just return the module found
+        else {
+            return module_obj;
+        }
     }
 
     #if MICROPY_MODULE_WEAK_LINKS
@@ -502,7 +539,7 @@ mp_obj_t mp_builtin___import__(size_t n_args, const mp_obj_t *args) {
     #if MICROPY_ERROR_REPORTING <= MICROPY_ERROR_REPORTING_TERSE
     mp_raise_msg(&mp_type_ImportError, MP_ERROR_TEXT("module not found"));
     #else
-    mp_raise_msg_varg(&mp_type_ImportError, MP_ERROR_TEXT("no module named '%q'"), module_name_qstr);
+    mp_raise_msg_varg(&mp_type_ImportError, MP_ERROR_TEXT("no module named '%q'"), qstr_from_str(module_name));
     #endif
 }
 
