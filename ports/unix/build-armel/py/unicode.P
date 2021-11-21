@@ -1,0 +1,56 @@
+build-armel/py/unicode.o: ../../py/unicode.c \
+ /usr/arm-linux-gnueabi/include/stdc-predef.h \
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdint.h \
+ /usr/arm-linux-gnueabi/include/stdint.h \
+ /usr/arm-linux-gnueabi/include/features.h \
+ /usr/arm-linux-gnueabi/include/sys/cdefs.h \
+ /usr/arm-linux-gnueabi/include/bits/wordsize.h \
+ /usr/arm-linux-gnueabi/include/gnu/stubs.h \
+ /usr/arm-linux-gnueabi/include/gnu/stubs-soft.h \
+ /usr/arm-linux-gnueabi/include/bits/wchar.h ../../py/unicode.h \
+ ../../py/mpconfig.h mpconfigport.h \
+ /usr/arm-linux-gnueabi/include/unistd.h \
+ /usr/arm-linux-gnueabi/include/bits/posix_opt.h \
+ /usr/arm-linux-gnueabi/include/bits/environments.h \
+ /usr/arm-linux-gnueabi/include/bits/types.h \
+ /usr/arm-linux-gnueabi/include/bits/typesizes.h \
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stddef.h \
+ /usr/arm-linux-gnueabi/include/bits/confname.h \
+ /usr/arm-linux-gnueabi/include/getopt.h \
+ /usr/arm-linux-gnueabi/include/alloca.h \
+ /usr/arm-linux-gnueabi/include/stdio.h \
+ /usr/arm-linux-gnueabi/include/libio.h \
+ /usr/arm-linux-gnueabi/include/_G_config.h \
+ /usr/arm-linux-gnueabi/include/wchar.h \
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdarg.h \
+ /usr/arm-linux-gnueabi/include/bits/stdio_lim.h \
+ /usr/arm-linux-gnueabi/include/bits/sys_errlist.h ../../py/misc.h \
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdbool.h
+../../py/unicode.c :
+ /usr/arm-linux-gnueabi/include/stdc-predef.h :
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdint.h :
+ /usr/arm-linux-gnueabi/include/stdint.h :
+ /usr/arm-linux-gnueabi/include/features.h :
+ /usr/arm-linux-gnueabi/include/sys/cdefs.h :
+ /usr/arm-linux-gnueabi/include/bits/wordsize.h :
+ /usr/arm-linux-gnueabi/include/gnu/stubs.h :
+ /usr/arm-linux-gnueabi/include/gnu/stubs-soft.h :
+ /usr/arm-linux-gnueabi/include/bits/wchar.h ../../py/unicode.h :
+ ../../py/mpconfig.h mpconfigport.h :
+ /usr/arm-linux-gnueabi/include/unistd.h :
+ /usr/arm-linux-gnueabi/include/bits/posix_opt.h :
+ /usr/arm-linux-gnueabi/include/bits/environments.h :
+ /usr/arm-linux-gnueabi/include/bits/types.h :
+ /usr/arm-linux-gnueabi/include/bits/typesizes.h :
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stddef.h :
+ /usr/arm-linux-gnueabi/include/bits/confname.h :
+ /usr/arm-linux-gnueabi/include/getopt.h :
+ /usr/arm-linux-gnueabi/include/alloca.h :
+ /usr/arm-linux-gnueabi/include/stdio.h :
+ /usr/arm-linux-gnueabi/include/libio.h :
+ /usr/arm-linux-gnueabi/include/_G_config.h :
+ /usr/arm-linux-gnueabi/include/wchar.h :
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdarg.h :
+ /usr/arm-linux-gnueabi/include/bits/stdio_lim.h :
+ /usr/arm-linux-gnueabi/include/bits/sys_errlist.h ../../py/misc.h :
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdbool.h :

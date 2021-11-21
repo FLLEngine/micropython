@@ -1,0 +1,20 @@
+build-armel/build-armel/frozen.o: build-armel/frozen.c \
+ /usr/arm-linux-gnueabi/include/stdc-predef.h \
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdint.h \
+ /usr/arm-linux-gnueabi/include/stdint.h \
+ /usr/arm-linux-gnueabi/include/features.h \
+ /usr/arm-linux-gnueabi/include/sys/cdefs.h \
+ /usr/arm-linux-gnueabi/include/bits/wordsize.h \
+ /usr/arm-linux-gnueabi/include/gnu/stubs.h \
+ /usr/arm-linux-gnueabi/include/gnu/stubs-soft.h \
+ /usr/arm-linux-gnueabi/include/bits/wchar.h
+build-armel/frozen.c :
+ /usr/arm-linux-gnueabi/include/stdc-predef.h :
+ /usr/lib/gcc-cross/arm-linux-gnueabi/6/include/stdint.h :
+ /usr/arm-linux-gnueabi/include/stdint.h :
+ /usr/arm-linux-gnueabi/include/features.h :
+ /usr/arm-linux-gnueabi/include/sys/cdefs.h :
+ /usr/arm-linux-gnueabi/include/bits/wordsize.h :
+ /usr/arm-linux-gnueabi/include/gnu/stubs.h :
+ /usr/arm-linux-gnueabi/include/gnu/stubs-soft.h :
+ /usr/arm-linux-gnueabi/include/bits/wchar.h :

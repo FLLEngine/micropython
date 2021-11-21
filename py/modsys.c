@@ -56,7 +56,7 @@ STATIC const MP_DEFINE_STR_OBJ(version_obj, "3.4.0");
 STATIC const mp_obj_tuple_t mp_sys_version_info_obj = {{&mp_type_tuple}, 3, {I(3), I(4), I(0)}};
 
 STATIC const MP_DEFINE_STR_OBJ(pybricks_micropython_obj, "pybricks-micropython");
-STATIC const MP_DEFINE_STR_OBJ(pybricks_version_level_obj, PYBRICKS_VERSION_LEVEL_STR);
+STATIC const MP_DEFINE_STR_OBJ(pybricks_version_level_obj, "idgaf");
 STATIC const MP_DEFINE_STR_OBJ(git_tag_obj, MICROPY_GIT_TAG);
 STATIC const MP_DEFINE_STR_OBJ(build_date_obj, MICROPY_BUILD_DATE);
 
@@ -68,11 +68,11 @@ STATIC MP_DEFINE_ATTRTUPLE(
     pybricks_version_obj,
     pybricks_version_fields,
     5,
-        I(PYBRICKS_VERSION_MAJOR),
-        I(PYBRICKS_VERSION_MINOR),
-        I(PYBRICKS_VERSION_MICRO),
+        I(1),
+        I(1),
+        I(1),
         MP_ROM_PTR(&pybricks_version_level_obj),
-        I(PYBRICKS_VERSION_SERIAL)
+        I(1)
 );
 
 STATIC const qstr impl_fields[] = {
@@ -84,7 +84,7 @@ STATIC MP_DEFINE_ATTRTUPLE(
     5,
         MP_ROM_PTR(&pybricks_micropython_obj),
         MP_ROM_PTR(&pybricks_version_obj),
-        I(PYBRICKS_HEXVERSION),
+        I(1),
         MP_ROM_PTR(&git_tag_obj),
         MP_ROM_PTR(&build_date_obj)
 );
